@@ -10,13 +10,13 @@
 class Media
 {
 public:
-    static constexpr int SAISON_INEXSISTANTE = -1;
+    static constexpr size_t SAISON_INEXSISTANTE = -1;
 
     class SortByTypeMedia
     {
     public:
         bool operator()(const std::unique_ptr<Media>& media_1,
-                        const std::unique_ptr<Media>& media_2)
+            const std::unique_ptr<Media>& media_2)
         {
             return media_1->typeMedia_ < media_2->typeMedia_;
         }
@@ -46,7 +46,7 @@ public:
     Media(Auteur* auteur, Media::TypeMedia typeMedia);
 
     Media(const std::string& nom, unsigned int anneeDeSortie, Genre genre, Pays pays,
-          bool estRestreintParAge, Auteur* auteur, Media::TypeMedia typeMedia);
+        bool estRestreintParAge, Auteur* auteur, Media::TypeMedia typeMedia);
     Media(const Media& media);
     virtual ~Media();
 

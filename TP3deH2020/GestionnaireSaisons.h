@@ -2,7 +2,6 @@
 #define GESTIONNAIRESAISONS_H
 
 // To do
-#include "memory"
 #include "Saison.h"
 
 class GestionnaireSaisons
@@ -23,7 +22,6 @@ public:
 
     Saison* getSaison(unsigned int numSaison) const;
     size_t getNbSaisons() const;
-    
 
 protected:
     size_t trouverIndexSaison(const unsigned int numSaison) const;

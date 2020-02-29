@@ -1,11 +1,10 @@
 // To do
 #include "Auteur.h"
-
-
+/*
 // To do
 Auteur::Auteur()
-    :anneeDeNaissance_(0),
-    nbMedias_(0)
+:anneeDeNaissance_(0)
+,nbMedias_(0)
 {
 }
 
@@ -61,7 +60,7 @@ bool Auteur::operator==(const std::string& nom) const
 std::ostream& operator<<(std::ostream& os, const Auteur& auteur)
 {
     os << "Nom: " << auteur.nom_ << " | Date de naissance: " << auteur.anneeDeNaissance_
-       << " | Nombre de Film/Serie: " << auteur.nbMedias_;
+       << " | Nombre de Film/Serie: " << auteur.nbMedias_ << "\n";
 
     return os;
 }
@@ -72,3 +71,4 @@ std::istream& operator>>(std::istream& is, Auteur& auteur)
     is >> auteur.nom_ >> auteur.anneeDeNaissance_ >> auteur.nbMedias_;
     return is;
 }
+*/

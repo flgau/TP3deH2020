@@ -2,12 +2,16 @@
 #define Librairie_H
 
 #include <functional>
+#include "Media.h"
+#include "Film.h"
+#include "Serie.h"
+#include "GestionnaireAuteurs.h"
 // To do
 
 class Librairie
 {
 public:
-    static constexpr size_t MEDIA_INEXSISTANT = -1; //yolo
+    static constexpr size_t MEDIA_INEXSISTANT = -1;
 
     Librairie() = default;
     Librairie(const Librairie&);
@@ -18,18 +22,18 @@ public:
     Librairie& operator-=(const std::string& nomMedia);
     friend std::ostream& operator<<(std::ostream& os, const Librairie& librairie);
 
-    Film* chercherFilm(const std::string& nomFilm);
-    Serie* chercherSerie(const std::string& nomSerie);
+    Film* chercherFilm(const std::string& nomFilm)const;
+    Serie* chercherSerie(const std::string& nomSerie)const;
 
     void ajouterSaison(const std::string& nomSerie, std::unique_ptr<Saison> saison);
     void retirerSaison(const std::string& nomSerie, unsigned int numSaison);
     void ajouterEpisode(const std::string& nomSerie, unsigned int numSaison,
-                        std::unique_ptr<Episode> episode);
+        std::unique_ptr<Episode> episode);
     void retirerEpisode(const std::string& nomSerie, unsigned int numSaison,
-                        unsigned int numEpisode);
+        unsigned int numEpisode);
 
     bool chargerMediasDepuisFichier(const std::string& nomFichier,
-                                    GestionnaireAuteurs& gestionnaireAuteurs);
+        GestionnaireAuteurs& gestionnaireAuteurs);
     bool chargerRestrictionsDepuisFichiers(const std::string& nomFichier);
 
     size_t getNbMedias() const;
@@ -42,7 +46,7 @@ public:
 protected:
     // Attributes
     size_t trouverIndexMedia(const std::string& nomSerie) const;
-    Media* chercherMedia(const std::string& nomMedia, Media::TypeMedia typeMedia);
+    Media* chercherMedia(const std::string& nomMedia, Media::TypeMedia typeMedia)const;
 
     bool lireLigneRestrictions(const std::string& ligne);
     bool lireLigneMedia(const std::string& ligne, GestionnaireAuteurs& gestionnaireAuteurs);
@@ -55,5 +59,5 @@ protected:
     std::vector<std::unique_ptr<Media>> medias_;
 };
 
-typedef bool (Librairie::*lireLigneMediaFunction)(std::istream&, GestionnaireAuteurs&);
+typedef bool (Librairie::* lireLigneMediaFunction)(std::istream&, GestionnaireAuteurs&);
 #endif // Librairie_H

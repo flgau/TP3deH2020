@@ -1,32 +1,45 @@
 // To do
+#include "Film.h"
+
 
 // To do
 Film::Film(Auteur* auteur)
-// To do
+    : Media(auteur,typeMedia_)
+    , duree_("")
 {
 }
 
 // To do
 Film::Film(const std::string& nom, unsigned int anneeDeSortie, Genre genre, Pays pays,
            bool estRestreintParAge, Auteur* auteur, const std::string& duree)
-    // To do
+    :Media(nom,anneeDeSortie,genre,pays,estRestreintParAge,auteur,typeMedia_)
+    ,duree_(duree)
 {
 }
 
 // To do
 std::ostream& Film::afficher(std::ostream& os) const
 {
-    // To do
+    return os << Media(nom_,
+                       anneeDeSortie_,
+                       genre_,
+                       pays_,
+                       estRestreintParAge_,
+                       auteur_,
+                       typeMedia_)
+              << "Durée:" << duree_;
+             
 }
 
 // To do
 std::istream& Film::lire(std::istream& is)
 {
-    // To do
+    Media::lire(is);
+    return is >> quoted(duree_);
 }
 
 // To do
 std::unique_ptr<Media> Film::clone() const
 {
-    // To do
+    return std::make_unique<Media>(*this);
 }

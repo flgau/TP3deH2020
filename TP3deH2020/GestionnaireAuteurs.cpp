@@ -27,24 +27,21 @@ bool GestionnaireAuteurs::chargerDepuisFichier(const std::string& nomFichier)
     if (fichier)
     {
         auteurs_.clear();
-        unsigned nbAuteurs = 0;
         std::string ligne;
         while (getline(fichier, ligne))
         {
             std::istringstream stream(ligne);
-            if (!(stream >> auteurs_[nbAuteurs])) 
+            Auteur auteur;
+            if (!(stream >> auteur))
                 return false;
-            nbAuteurs++;
-                
-            
+            (*this) += auteur;
         }
         return true;
     }
     std::cerr << "Le fichier " << nomFichier
-              << " n'existe pas. Assurez vous de le mettre au bon endroit.\n";
+        << " n'existe pas. Assurez vous de le mettre au bon endroit.\n";
     return false;
 }
-
 //! Méthode qui retourne le nombre d'auteurs
 //! \return Le nombre d'auteurs
 size_t GestionnaireAuteurs::getNbAuteurs() const
