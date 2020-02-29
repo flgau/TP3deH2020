@@ -7,7 +7,7 @@
 class Librairie
 {
 public:
-    static constexpr size_t MEDIA_INEXSISTANT = -1;
+    static constexpr size_t MEDIA_INEXSISTANT = -1; //yolo
 
     Librairie() = default;
     Librairie(const Librairie&);
